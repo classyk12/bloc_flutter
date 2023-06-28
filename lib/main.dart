@@ -42,29 +42,40 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  state.counterValue.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-              buildWhen: (prev, current) {
-                if (prev != current) return true;
+      body:
+          BlocConsumer<CounterCubit, CounterState>(listener: (context, state) {
+        if (state.isIncremented == true) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              duration: Duration(seconds: 1), content: Text("Increment")));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              duration: Duration(seconds: 1), content: Text("Decrement")));
+        }
+      }, builder: (context, state) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              BlocBuilder<CounterCubit, CounterState>(
+                builder: (context, state) {
+                  return Text(
+                    state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                },
+                buildWhen: (prev, current) {
+                  if (prev != current) return true;
 
-                return false;
-              },
-            ),
-          ],
-        ),
-      ),
+                  return false;
+                },
+              ),
+            ],
+          ),
+        );
+      }),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
