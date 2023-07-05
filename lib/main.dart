@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_app/business/cubit/counter_cubit.dart';
-import 'package:flutter_bloc_app/presentation/screens/home.dart';
-import 'package:flutter_bloc_app/presentation/screens/second_screen.dart';
-import 'package:flutter_bloc_app/presentation/screens/third_screen.dart';
+import 'package:flutter_bloc_app/presentation/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,32 +13,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final CounterCubit _cubit = CounterCubit();
+  final AppRouter _router = AppRouter();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        '/': (context) => BlocProvider.value(
-              value: _cubit,
-              child: const HomeScreen(
-                title: 'Home Page',
-              ),
-            ),
-        '/second': (context) => BlocProvider.value(
-              value: _cubit,
-              child: const SecondScreen(
-                title: 'Second Page',
-              ),
-            ),
-        '/third': (context) => BlocProvider.value(
-              value: _cubit,
-              child: const ThirdScreen(
-                title: 'Third Page',
-              ),
-            ),
-      },
+      // routes: {
+      //   '/': (context) => BlocProvider.value(
+      //         value: _cubit,
+      //         child: const HomeScreen(
+      //           title: 'Home Page',
+      //         ),
+      //       ),
+      //   '/second': (context) => BlocProvider.value(
+      //         value: _cubit,
+      //         child: const SecondScreen(
+      //           title: 'Second Page',
+      //         ),
+      //       ),
+      //   '/third': (context) => BlocProvider.value(
+      //         value: _cubit,
+      //         child: const ThirdScreen(
+      //           title: 'Third Page',
+      //         ),
+      //       ),
+      // },
+      onGenerateRoute: _router.onGenerateRoute,
+
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -51,5 +49,9 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  
+  @override
+  void dispose() {
+    _router.dispose();
+    super.dispose();
+  }
 }
