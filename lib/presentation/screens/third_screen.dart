@@ -40,7 +40,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 builder: (context, state) {
                   return Text(
                     state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   );
                 },
                 buildWhen: (prev, current) {
@@ -53,30 +53,30 @@ class _ThirdScreenState extends State<ThirdScreen> {
           ),
         );
       }),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-            heroTag: '1',
-            backgroundColor: Colors.green,
-            onPressed: () {
-              BlocProvider.of<CounterCubit>(context).increment();
-            },
-            tooltip: 'increment',
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(width: 50),
-          FloatingActionButton(
-            heroTag: null,
-            backgroundColor: Colors.red,
-            onPressed: () {
-              BlocProvider.of<CounterCubit>(context).decrement();
-            },
-            tooltip: 'decrement',
-            child: const Icon(Icons.remove),
-          ),
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
+      //     FloatingActionButton(
+      //       heroTag: '1',
+      //       backgroundColor: Colors.green,
+      //       onPressed: () {
+      //         BlocProvider.of<CounterCubit>(context).increment();
+      //       },
+      //       tooltip: 'increment',
+      //       child: const Icon(Icons.add),
+      //     ),
+      //     const SizedBox(width: 50),
+      //     FloatingActionButton(
+      //       heroTag: null,
+      //       backgroundColor: Colors.red,
+      //       onPressed: () {
+      //         BlocProvider.of<CounterCubit>(context).decrement();
+      //       },
+      //       tooltip: 'decrement',
+      //       child: const Icon(Icons.remove),
+      //     ),
+      //   ],
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

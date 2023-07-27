@@ -35,7 +35,7 @@ class CounterCubit extends Cubit<CounterState> {
       counterValue: state.counterValue! - 1, isIncremented: false));
 
   @override
-  Future close() async {
+  Future<void> close() async {
     internetCubitSubscription!.cancel();
     return super.close();
   }

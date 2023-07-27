@@ -1,9 +1,9 @@
 PODS:
   - connectivity_plus (0.0.1):
     - Flutter
-    - Reachability
+    - ReachabilitySwift
   - Flutter (1.0.0)
-  - Reachability (3.2)
+  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
@@ -11,7 +11,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Reachability
+    - ReachabilitySwift
 
 EXTERNAL SOURCES:
   connectivity_plus:
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  connectivity_plus: f5e5e0b894ec1187bfab9816d6c2f034da8d46da
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: 9c90a6ac3fbd8b1bfdd3c6c7f09678525261d3c2
+PODFILE CHECKSUM: d39aea45b624e300ecabbcb5bf4af597e0589f7c
 
 COCOAPODS: 1.11.3
