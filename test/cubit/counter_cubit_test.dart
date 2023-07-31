@@ -1,17 +1,17 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc_app/cubit/counter_cubit.dart';
-import 'package:flutter_bloc_app/cubit/internet_cubit.dart';
+// import 'package:flutter_bloc_app/cubit/internet_cubit.dart';
 import 'package:test/test.dart';
 
 void main() {
   //this allows grouping of test based on feature (cubit or bloc to be tested)
   group('CounterCubit', () {
     CounterCubit? _cubit;
-    InternetCubit? _internetCubit;
+//    InternetCubit? _internetCubit;
 
     //initialization happens here.its called before every test is run
     setUp(() {
-      _cubit = CounterCubit(_internetCubit!);
+      _cubit = CounterCubit();
     });
 
     //gets run after each test. this is used to dispose created cubit/blocs
@@ -28,7 +28,7 @@ void main() {
     blocTest(
         'verify that the output of the increment function returns counterValue = 12 and wasIncremented = true ',
         //avails the instance of the bloc or cubit
-        build: () => CounterCubit(_internetCubit!),
+        build: () => CounterCubit(),
         seed: () => const CounterState(counterValue: 3),
 
         //call the cubit methods
@@ -42,7 +42,7 @@ void main() {
     blocTest(
         'verify that the output of the decrement function returns counterValue = -1 and wasIncremented = false ',
         //avails the instance of the bloc or cubit
-        build: () => CounterCubit(_internetCubit!),
+        build: () => CounterCubit(),
         seed: () => const CounterState(counterValue: 9),
 
         //call the cubit methods
