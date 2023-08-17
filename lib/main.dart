@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_app/cubit/counter_cubit.dart';
 import 'package:flutter_bloc_app/cubit/internet_cubit.dart';
+import 'package:flutter_bloc_app/cubit/settings_cubit.dart';
 import 'package:flutter_bloc_app/presentation/router/app_router.dart';
 
 void main() {
@@ -16,6 +17,14 @@ class MyApp extends StatelessWidget {
   final Connectivity? connectivity;
   final AppRouter? appRouter;
 
+  //!hguihihi
+
+  //? hvhghghghgh
+
+  //TODO: HHGHFHGHGHGG
+
+  //* HHHIHHIHIHI
+
   const MyApp({Key? key, this.connectivity, this.appRouter}) : super(key: key);
 
   // This widget is the root of your application.
@@ -26,6 +35,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<InternetCubit>(
             create: (context) => InternetCubit(connectivity!)),
         BlocProvider<CounterCubit>(create: (context) => CounterCubit()),
+        BlocProvider<SettingsCubit>(create: (context) => SettingsCubit()),
       ],
       child: MaterialApp(
         // routes: {

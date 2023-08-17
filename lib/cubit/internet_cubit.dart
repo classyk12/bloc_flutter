@@ -17,6 +17,7 @@ class InternetCubit extends Cubit<InternetState> {
     monitorInternetConnection();
   }
 
+  
   void monitorInternetConnection() {
     connectivityStreamSubscription =
         connectivity.onConnectivityChanged.listen((result) {

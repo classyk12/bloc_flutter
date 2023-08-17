@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return
-
         // BlocListener<InternetCubit, InternetState>(
         //   listener: (context, state) {
         //     if (state is InternetConnected &&
@@ -29,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
         //     }
         //   },
         //   child:
-
         Scaffold(
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -58,14 +56,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed('/settings');
+              },
+              child: const Icon(Icons.settings))
+        ],
       ),
       body: Center(
         child: ListView(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Builder(builder: (context) {
+              final counterval = context
+                  .select((CounterCubit cubit) => cubit.state.counterValue);
+              final incrementval = context
+                  .select((CounterCubit cubit) => cubit.state.isIncremented);
+              return Column(
+                children: [
+                  Text(
+                    'counter: ' + counterval.toString(),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'isIncremented: ' + incrementval.toString(),
+                  ),
+                ],
+              );
+            }),
+            const SizedBox(height: 30),
             BlocBuilder<CounterCubit, CounterState>(builder: ((context, state) {
               return Column(
                 children: [
