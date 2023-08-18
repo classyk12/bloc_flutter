@@ -1,9 +1,11 @@
-import 'package:bloc/bloc.dart';
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'settings_state.dart';
 
-class SettingsCubit extends Cubit<SettingsState> {
+class SettingsCubit extends Cubit<SettingsState> with HydratedMixin {
   SettingsCubit()
       : super(const SettingsState(
             appNotifications: false, emailNotifications: false));
@@ -13,4 +15,14 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void toggleEmailNotifications(bool value) =>
       emit(state.copyWith(emailNotifications: value));
+
+  @override
+  SettingsState? fromJson(Map<String, dynamic> json) {
+    return SettingsState.fromMap(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(SettingsState state) {
+    return state.toMap();
+  }
 }
