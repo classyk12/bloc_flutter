@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 // import 'package:flutter_bloc_app/constants/enums.dart';
 // import 'package:flutter_bloc_app/cubit/internet_cubit.dart';
@@ -37,6 +38,7 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
   @override
   //* this is called everytime the state needs to be retrieved
   CounterState? fromJson(Map<String, dynamic> json) {
+    //onError(error, stackTrace)
     return CounterState.fromMap(json);
   }
 
@@ -45,4 +47,11 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
   Map<String, dynamic>? toJson(CounterState state) {
     return state.toMap();
   }
+
+//* this is used to track all the changes in the cubit
+  // @override
+  // void onChange(Change<CounterState> change) {
+  //   debugPrint(change.toString());
+  //   super.onChange(change);
+  // }
 }

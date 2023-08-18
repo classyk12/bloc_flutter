@@ -46,5 +46,6 @@ class SettingsState extends Equatable {
       SettingsState.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  bool get stringify => true;
+  String toString() =>
+      'SettingsState(appNotifications: $appNotifications, emailNotifications: $emailNotifications)';
 }

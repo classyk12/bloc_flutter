@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'internet_cubit.dart';
 
 abstract class InternetState extends Equatable {
@@ -14,6 +15,9 @@ class InternetConnected extends InternetState {
   final ConnectivityType connectivity;
 
   const InternetConnected(this.connectivity);
+
+  @override
+  String toString() => 'InternetConnected(connectivity: $connectivity)';
 }
 
 class InternetDisconnected extends InternetState {}
